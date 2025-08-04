@@ -23,7 +23,7 @@ export default function ContactCTA() {
             Ready to Start Your <span className="text-golden">Project?</span>
           </h2>
           <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Let's discuss how we can bring your architectural vision to life. Contact us today for a consultation.
+            Let&apos;s discuss how we can bring your architectural vision to life. Contact us today for a consultation.
           </p>
           <Link
             href="/contact"

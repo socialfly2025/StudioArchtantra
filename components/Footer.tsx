@@ -16,16 +16,16 @@ export default function Footer() {
               Creating architectural excellence through innovative design and meticulous attention to detail.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/60 hover:text-golden transition-colors">
+              <a href=" https://www.facebook.com/share/1Ax6HRXfif/" className="text-white/60 hover:text-golden transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-golden transition-colors">
+              <a href="https://x.com/archtantra72224?s=09 " className="text-white/60 hover:text-golden transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-golden transition-colors">
+              <a href="https://www.instagram.com/studio.archtantra?igsh=ZGUzMzM3NWJiOQ==" className="text-white/60 hover:text-golden transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-golden transition-colors">
+              <a href="https://wa.me/message/MRNQPSEMAHAAG1 " className="text-white/60 hover:text-golden transition-colors">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -57,22 +57,22 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center text-white/60">
                 <MapPin size={16} className="mr-3 text-golden" />
-                <span>123 Architecture Ave, Design City, DC 12345</span>
+                <span>2006, Opp. Sachdeva plaza , Mawana (Meerut), Uttar Pradesh, India</span>
               </div>
               <div className="flex items-center text-white/60">
                 <Phone size={16} className="mr-3 text-golden" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91-9068414747</span>
               </div>
               <div className="flex items-center text-white/60">
                 <Mail size={16} className="mr-3 text-golden" />
-                <span>hello@studioarchtantra.com</span>
+                <span>studioarchtantra@gmail.com</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-white/60">
-          <p>&copy; 2024 Studio Archtantra. All rights reserved.</p>
+          <p>&copy; Developed by <a href="https://socialflynetworks.com" target="_blank" rel="noopener noreferrer">SocialFly Networks</a></p>
         </div>
       </div>
     </footer>

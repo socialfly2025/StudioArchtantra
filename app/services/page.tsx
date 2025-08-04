@@ -1,11 +1,11 @@
 'use client';
-
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Head from 'next/head';
-import { Home, Building, Palette, Lightbulb, Ruler, Settings } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Home, Building, Palette, Lightbulb, Ruler, Settings } from 'lucide-react';
 
 const services = [
   {
@@ -53,8 +53,26 @@ const services = [
 ];
 
 export default function Services() {
-  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [servicesRef, servicesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const nextService = () => {
+    setCurrentIndex((prev) => (prev + 1) % services.length);
+  };
+
+  const prevService = () => {
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+  };
+
+  const goToService = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const currentService = services[currentIndex];
 
   return (
     <>
@@ -66,72 +84,159 @@ export default function Services() {
       <main>
         <Header />
         
-        {/* Hero Section */}
-        <section ref={heroRef} className="pt-32 pb-24 bg-white">
-          <div className="container-max section-padding">
+        {/* Full Screen Services Carousel */}
+        <section className="relative h-screen w-full overflow-hidden">
+          {/* Full Screen Image Background */}
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
+              key={currentService.title}
+              className="absolute inset-0"
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <h1 className="text-4xl md:text-6xl font-light text-midnight mb-6">
-                Our <span className="text-golden">Services</span>
-              </h1>
-              <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                We offer comprehensive architectural services tailored to bring your vision to life. 
-                From initial concept to final construction, we guide you through every step of the process.
-              </p>
+              <img
+                src={currentService.image}
+                alt={currentService.title}
+                className="w-full h-full object-cover"
+              />
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/50" />
             </motion.div>
-          </div>
-        </section>
+          </AnimatePresence>
 
-        {/* Services Grid */}
-        <section ref={servicesRef} className="pb-24 bg-white">
-          <div className="container-max section-padding">
-            <div className="space-y-24">
-              {services.map((service, index) => (
+          {/* Content Overlay */}
+          <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 pt-32">
+            {/* Header */}
+            <motion.div
+              ref={ref}
+              className="text-center"
+              initial={{ opacity: 0, y: -50 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <motion.span 
+                className="inline-block px-6 py-2 bg-white/20 backdrop-blur-md text-white text-sm font-medium rounded-full mb-4"
+                whileHover={{ scale: 1.05 }}
+              >
+                Our Services
+              </motion.span>
+            </motion.div>
+
+            {/* Main Content */}
+            <div className="flex-1 flex items-center justify-center">
+              <motion.div
+                className="text-center max-w-5xl mx-auto text-white"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                key={`content-${currentService.title}`}
+              >
+                {/* Service Icon */}
                 <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
-                    index % 2 === 1 ? 'lg:grid-flow-col-reverse' : ''
-                  }`}
+                  className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-md rounded-full mb-6"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                    <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-golden/10 rounded-lg flex items-center justify-center mr-4">
-                        <service.icon className="w-8 h-8 text-golden" />
-                      </div>
-                      <h2 className="text-3xl font-light text-midnight">{service.title}</h2>
-                    </div>
-                    
-                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                      {service.description}
-                    </p>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      {service.features.map((feature) => (
-                        <div key={feature} className="flex items-center">
-                          <div className="w-2 h-2 bg-golden rounded-full mr-3" />
-                          <span className="text-gray-600">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-96 object-cover rounded-lg shadow-2xl"
-                    />
-                    <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-golden/10 rounded-lg -z-10" />
-                  </div>
+                  <currentService.icon className="w-10 h-10 text-white" />
                 </motion.div>
-              ))}
+
+                {/* Title */}
+                <motion.h2
+                  className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.7 }}
+                >
+                  {currentService.title}
+                </motion.h2>
+
+                {/* Description */}
+                <motion.p
+                  className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.9 }}
+                >
+                  {currentService.description}
+                </motion.p>
+
+                {/* Features */}
+                <motion.div
+                  className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.1 }}
+                >
+                  {currentService.features.map((feature, index) => (
+                    <motion.div
+                      key={feature}
+                      className="flex items-center justify-center px-4 py-3 bg-white/20 backdrop-blur-md rounded-full text-sm font-medium"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <span className="text-center">{feature}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Bottom Controls */}
+            <div className="flex items-center justify-between">
+              {/* Navigation Arrows */}
+              <div className="flex gap-4">
+                <motion.button
+                  onClick={prevService}
+                  className="p-3 bg-white/20 backdrop-blur-md text-white rounded-full hover:bg-white/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </motion.button>
+                <motion.button
+                  onClick={nextService}
+                  className="p-3 bg-white/20 backdrop-blur-md text-white rounded-full hover:bg-white/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </motion.button>
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex gap-3">
+                {services.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => goToService(index)}
+                    className={`relative overflow-hidden rounded-full transition-all duration-300 ${
+                      index === currentIndex ? 'w-12 h-3' : 'w-3 h-3'
+                    }`}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <div className={`w-full h-full rounded-full transition-all duration-300 ${
+                      index === currentIndex 
+                        ? 'bg-white' 
+                        : 'bg-white/40 hover:bg-white/60'
+                    }`} />
+                  </motion.button>
+                ))}
+              </div>
+
+              {/* Service Counter */}
+              <div className="text-white/80 text-sm font-medium">
+                <span className="text-white font-bold">
+                  {String(currentIndex + 1).padStart(2, '0')}
+                </span>
+                {' / '}
+                {String(services.length).padStart(2, '0')}
+              </div>
             </div>
           </div>
         </section>
@@ -141,15 +246,16 @@ export default function Services() {
           <div className="container-max section-padding">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
               className="text-center"
             >
               <h2 className="text-4xl md:text-5xl font-light mb-6">
                 Ready to Discuss Your <span className="text-golden">Project?</span>
               </h2>
               <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Let's explore how our services can bring your architectural vision to life. 
+                Let&apos;s explore how our services can bring your architectural vision to life. 
                 Contact us today for a personalized consultation.
               </p>
               <a

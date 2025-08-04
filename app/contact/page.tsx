@@ -65,17 +65,17 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Address',
-      details: '123 Architecture Ave\nDesign City, DC 12345',
+      details: '2006, Opp. Sachdeva plaza , Mawana (Meerut), Uttar Pradesh, India',
     },
     {
       icon: Phone,
       title: 'Phone',
-      details: '+1 (555) 123-4567',
+      details: ' +91-9068414747',
     },
     {
       icon: Mail,
       title: 'Email',
-      details: 'hello@studioarchtantra.com',
+      details: ' studioarchtantra@gmail.com',
     },
     {
       icon: Clock,
@@ -254,9 +254,7 @@ export default function Contact() {
                 </div>
 
                 {/* Map Placeholder */}
-                <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <p className="text-gray-500">Interactive Map Coming Soon</p>
-                </div>
+                
               </motion.div>
             </div>
           </div>

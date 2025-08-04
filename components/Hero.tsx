@@ -37,6 +37,7 @@ export default function Hero() {
           <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
             Where architectural vision meets artistic expression, creating environments that transcend the ordinary
           </p>
+          <a href='/contact'>
           <motion.button
             className="bg-golden hover:bg-golden/90 text-midnight px-8 py-4 text-lg font-medium tracking-wide transition-all duration-300 hover:scale-105 rounded-full"
             whileHover={{ scale: 1.05 }}
@@ -44,6 +45,7 @@ export default function Hero() {
           >
             Explore Our Work
           </motion.button>
+          </a>
         </motion.div>
       </div>
 
