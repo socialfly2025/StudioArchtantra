@@ -68,7 +68,7 @@ export default function Services() {
     setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
   };
 
-  const goToService = (index) => {
+  const goToService = (index: number) => {
     setCurrentIndex(index);
   };
 
