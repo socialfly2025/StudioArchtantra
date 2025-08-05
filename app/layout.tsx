@@ -7,6 +7,7 @@ import WhatsAppButton from '@/components/WhatsappButton';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://studioarchtantra.com'),
   title: 'Studio Archtantra - Architecture & Design Excellence',
   description: 'Studio Archtantra is a premier architecture firm specializing in residential, commercial, and interior design projects. Creating spaces that inspire and endure.',
   keywords: 'architecture, design, residential, commercial, interior design, Studio Archtantra',

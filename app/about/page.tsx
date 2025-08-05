@@ -8,25 +8,39 @@ import Head from 'next/head';
 import { Award, Users, Clock, Target } from 'lucide-react';
 
 const team = [
-  {
-    name: 'Sarah Mitchell',
-    role: 'Principal Architect',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
-    bio: 'With over 15 years of experience, Sarah leads our design vision and ensures every project meets our high standards.',
+   {
+    name: 'Mrs. Priti Chauhan',
+    role: 'Director',
+    image: '/images/director.png',
+    bio: 'Priti brings strong leadership and a people-first approach to operations, driving the organization’s strategic vision.',
   },
   {
-    name: 'David Chen',
-    role: 'Design Director',
-    image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg',
-    bio: 'David brings innovative design solutions and sustainable practices to every project he oversees.',
+    name: 'Ar. Abhay Chauhan',
+    role: 'Founder and Principal Architect',
+    image: '/images/founder.png',
+    bio: 'Abhay brings visionary leadership and deep architectural expertise to the firm, laying the foundation for every creative endeavor.',
   },
   {
-    name: 'Emily Rodriguez',
+    name: 'Mr. Anuj Chauhan',
+    role: 'Financial Advisor',
+    image: '/images/finance.png',
+    bio: 'Anuj provides strategic financial guidance to support sustainable growth and operational efficiency.',
+  },
+    {
+    name: 'Mr. Manuj Chauhan',
+    role: 'Vastu Consultant',
+    image: '/images/vastuconsultant.png',
+    bio: 'Manuj integrates traditional Vastu principles into modern design, enhancing harmony and balance in spaces.',
+  },
+  {
+    name: 'Mr. Aditya Tomar',
     role: 'Project Manager',
-    image: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg',
-    bio: 'Emily ensures seamless project execution from concept to completion with her exceptional organizational skills.',
+    image: '/images/projectmanager.png',
+    bio: 'Aditya oversees project execution with precision and coordination, ensuring timelines and quality are met flawlessly.',
   },
+ 
 ];
+
 
 const values = [
   {
@@ -190,7 +204,7 @@ export default function About() {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-48 h-48 object-cover rounded-full mx-auto shadow-lg"
+                      className="w-40 h-49 object-cover rounded-full mx-auto shadow-lg"
                     />
                     <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-golden/20 rounded-full" />
                   </div>
