@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -26,7 +26,7 @@ export default function Footer() {
                 <Instagram size={20} />
               </a>
               <a href="https://wa.me/message/MRNQPSEMAHAAG1 " className="text-white/60 hover:text-golden transition-colors">
-                <Linkedin size={20} />
+                <MessageCircle size={20} />
               </a>
             </div>
           </div>

@@ -5,22 +5,22 @@ import { useInView } from 'react-intersection-observer';
 import { Star } from 'lucide-react';
 
 const testimonials = [
-  {
-    name: 'Sarah Johnson',
-    role: 'Homeowner',
-    content: 'Studio Archtantra transformed our vision into a stunning reality. Their attention to detail and creative approach exceeded our expectations.',
+   {
+    name: 'Ritika Sharma',
+    role: 'Homeowner, Gurugram',
+    content: 'Studio Archtantra brought our dream home to life with elegance and precision. Their attention to detail and creative vision truly exceeded our expectations.',
     rating: 5,
   },
   {
-    name: 'Michael Chen',
-    role: 'CEO, TechCorp',
-    content: 'The commercial space they designed for us perfectly balances functionality with aesthetic appeal. Our employees love coming to work.',
+    name: 'Ankit Mehra',
+    role: 'Founder & CEO, TechNova Solutions',
+    content: 'The office space designed by Studio Archtantra strikes the perfect balance between functionality and design. Our team enjoys a more productive and inspiring environment now.',
     rating: 5,
   },
   {
-    name: 'Emily Rodriguez',
-    role: 'Interior Designer',
-    content: 'Working with Studio Archtantra was a pleasure. Their collaborative approach and expertise made our project seamless and successful.',
+    name: 'Neha Iyer',
+    role: 'Senior Interior Consultant, UrbanNest',
+    content: 'Collaborating with Studio Archtantra was smooth and insightful. Their professional yet friendly approach helped make the entire project a success.',
     rating: 5,
   },
 ];

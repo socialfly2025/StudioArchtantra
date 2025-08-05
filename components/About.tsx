@@ -41,9 +41,9 @@ export default function About() {
   });
 
   const stats = [
-    { number: 50, suffix: '+', label: 'Projects Completed', delay: 0 },
-    { number: 12, suffix: '+', label: 'Years Experience', delay: 0.2 },
-    { number: 25, suffix: '+', label: 'Awards Won', delay: 0.4 },
+    { number: 5, suffix: '+', label: 'Projects Completed', delay: 0 },
+    { number: 1, suffix: '+', label: 'Years Experience', delay: 0.2 },
+    { number: 5, suffix: '+', label: 'Awards Won', delay: 0.4 },
   ];
 
   return (

@@ -79,7 +79,7 @@ export default function About() {
                 About <span className="text-golden">Studio Archtantra</span>
               </h1>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
-                Founded in 2010, Studio Archtantra has been at the forefront of architectural innovation, 
+                Founded in 2025, Studio Archtantra has been at the forefront of architectural innovation, 
                 creating spaces that inspire and endure. Our multidisciplinary approach combines artistic 
                 vision with technical expertise to deliver exceptional results.
               </p>
